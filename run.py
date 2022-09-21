@@ -25,7 +25,15 @@ def get_game_type():
     game_type = int(input("\nEnter an option to play: "))
     return game_type
 
-def game_option(index):
+def get_answer(question):
+    """
+    Asks the user for their answer
+    """
+    print("Answer:")
+    result = int(input(""))
+    return result
+
+def game_play(index):
     """
     Gets 2 random numbers between 1 and 25 and
     prints the appropriate maths question
@@ -37,6 +45,7 @@ def game_option(index):
         question = str(number_one) + " + " + str(number_two) + " =\n"
         solution = number_one + number_two
         print(question)
+        user_solution = get_answer(question)
 
 
 
@@ -48,7 +57,7 @@ def main():
     game_header()
     game_menu()
     choice = get_game_type()
-    game_option(choice)
+    game_play(choice)
 
 
 

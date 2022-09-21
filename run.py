@@ -33,6 +33,15 @@ def get_answer(question):
     result = int(input(""))
     return result
 
+def check_solution(user_solution, solution):
+    """
+    Checks the users answer and returns correct or incorrect
+    """
+    if user_solution == solution:
+        print("Correct")
+    else:
+        print("Incorrect")
+
 def game_play(index):
     """
     Gets 2 random numbers between 1 and 25 and
@@ -46,7 +55,7 @@ def game_play(index):
         solution = number_one + number_two
         print(question)
         user_solution = get_answer(question)
-
+        check_solution(user_solution, solution)
 
 
 

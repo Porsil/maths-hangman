@@ -18,6 +18,26 @@ def game_menu():
     print("Game options:\n")
     print(menu[0])
 
+def get_game_type():
+    """
+    Asks the user for their choice of game type
+    """
+    game_type = int(input("\nEnter an option to play: "))
+    return game_type
+
+def game_option(index):
+    """
+    Gets 2 random numbers between 1 and 25 and
+    prints the appropriate maths question
+    """
+    number_one = random.randrange(1, 26)
+    number_two = random.randrange(1, 26)
+    if index == 1:
+        print("\nQuestion:")
+        question = str(number_one) + " + " + str(number_two) + " =\n"
+        solution = number_one + number_two
+        print(question)
+
 
 
 

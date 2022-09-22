@@ -20,18 +20,17 @@ def game_menu():
 
 def get_game_type():
     """
-    Asks the user for their choice of game type
+    Asks the user for their choice of game type and validates the data
     """
-    try:
-        game_type = int(input("\nEnter an option to play: "))
-        while game_type <= 0 or game_type > 4:
-            print("\nInvalid menu choice.")
-            game_type = int(input("\nEnter an option to play: "))   
-        else:
-            return game_type
-    except ValueError:
-        print("\nNOT A NUMBER...")
-        
+    while True:
+        try:
+            game_type = int(input("\nEnter an option to play: "))
+            if game_type <= 0 or game_type > 4:
+                print("\nNot a valid game option.")
+            else:
+                return game_type
+        except ValueError:
+            print("\nNot a valid game option.")
 
 def get_answer(question):
     """

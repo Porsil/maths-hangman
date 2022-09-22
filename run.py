@@ -45,9 +45,9 @@ def check_solution(user_solution, solution):
     Checks the users answer and returns correct or incorrect
     """
     if user_solution == solution:
-        print("Correct")
+        print("\nCorrect")
     else:
-        print("Incorrect")
+        print(f"\nIncorrect. The correct answer is {solution}.")
 
 def game_play(index):
     """

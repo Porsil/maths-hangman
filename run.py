@@ -63,7 +63,7 @@ def game_play(index):
         print(question)
         user_solution = get_answer(question)
         check_solution(user_solution, solution)
-
+        
 
 
 def main():
@@ -73,7 +73,13 @@ def main():
     game_header()
     game_menu()
     choice = get_game_type()
+    count = 1
     game_play(choice)
+    while count < 15:
+        game_play(choice)
+        count = count + 1
+
+    
 
 
 

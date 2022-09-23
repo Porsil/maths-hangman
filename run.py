@@ -46,10 +46,11 @@ def check_solution(user_solution, solution, increment):
     """
     if user_solution == solution:
         print("\nCorrect")
-        correct_increment = increment + 1
-        return correct_increment
+        increment = increment + 1
+        return increment
     else:
         print(f"\nIncorrect. The correct answer is {solution}.")
+        return increment
 
 def game_play(index, increment):
     """
@@ -64,8 +65,8 @@ def game_play(index, increment):
         solution = number_one + number_two
         print(question)
         user_solution = get_answer(question)
-        correct_increment = check_solution(user_solution, solution, increment)
-        return correct_increment
+        increment = check_solution(user_solution, solution, increment)
+        return increment
         
 
 
@@ -81,7 +82,9 @@ def main():
     while total < 15:
         total = total + 1
         correct = game_play(choice, correct)
-        print(f"You have scored {correct}/{total} correct")
+        incorrect = total - correct
+        print(f"Score: {correct}/{total}")
+        print(f"Incorrect: {incorrect}")
 
 
     

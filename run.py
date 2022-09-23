@@ -40,16 +40,18 @@ def get_answer(question):
     result = int(input(""))
     return result
 
-def check_solution(user_solution, solution):
+def check_solution(user_solution, solution, increment):
     """
     Checks the users answer and returns correct or incorrect
     """
     if user_solution == solution:
         print("\nCorrect")
+        correct_increment = increment + 1
+        return correct_increment
     else:
         print(f"\nIncorrect. The correct answer is {solution}.")
 
-def game_play(index):
+def game_play(index, increment):
     """
     Gets 2 random numbers between 1 and 25 and
     prints the appropriate maths question
@@ -62,7 +64,8 @@ def game_play(index):
         solution = number_one + number_two
         print(question)
         user_solution = get_answer(question)
-        check_solution(user_solution, solution)
+        correct_increment = check_solution(user_solution, solution, increment)
+        return correct_increment
         
 
 
@@ -70,14 +73,16 @@ def main():
     """
     Run all program functions
     """
+    total = 0
+    correct = 0
     game_header()
     game_menu()
     choice = get_game_type()
-    count = 1
-    game_play(choice)
-    while count < 15:
-        game_play(choice)
-        count = count + 1
+    while total < 15:
+        total = total + 1
+        correct = game_play(choice, correct)
+        print(f"You have scored {correct}/{total} correct")
+
 
     
 

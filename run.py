@@ -7,11 +7,11 @@ def game_header():
     print("*******************")
     print("*  MATHS HANGMAN  *")
     print("*******************\n")
-    print("How to play:\n")
-    print("Select desired maths questions from the game options")
-    print("You will be given 15 questions to answer")
-    print("Each incorrect answer will add to the hangman")
-    print("Answer all questions before the hangman is complete to win\n")
+    print("How to play:")
+    print("   Select desired maths questions from the game options")
+    print("   You will be given 15 questions to answer")
+    print("   Each incorrect answer will add to the hangman")
+    print("   Answer all questions before the hangman is complete to win\n")
 
 
 def game_menu():
@@ -19,11 +19,11 @@ def game_menu():
     Prints the game menu options to the board
     """
     menu = ["1. Addition", "2. Subtraction", "3. Multiplication", "4. Division"]
-    print("Game options:\n")
-    print(menu[0])
-    print(menu[1])
-    print(menu[2])
-    print(menu[3])
+    print("Game options:")
+    print("   " + menu[0])
+    print("   " + menu[1])
+    print("   " + menu[2])
+    print("   " + menu[3])
 
 
 def get_game_type():
@@ -33,7 +33,7 @@ def get_game_type():
     while True:
         try:
             game_type = int(input("\nEnter an option to play: "))
-            if game_type <= 0 or game_type > 4:
+            if game_type <= 0 or game_type > 5:
                 print("\nNot a valid game option.")
             else:
                 return game_type
@@ -75,7 +75,7 @@ def get_answer(total, question):
     """
     Asks the user for their answer
     """
-    print(f"\nQuestion {total}: {question}", end=" ")
+    print(f"\nQuestion {total}:   {question}", end=" ")
     result = int(input(""))
     return result
 
@@ -90,7 +90,7 @@ def check_solution(user_solution, solution, increment):
         return increment
     else:
         solution = round(solution)
-        print(f"\nIncorrect. The correct answer is {solution}.")
+        print(f"\nIncorrect, the correct answer is {solution}.")
         return increment
 
 
@@ -161,7 +161,7 @@ def play_again():
     if play_again == "y" or play_again == "Y":
         return True
     else:
-        print("Thank-you for playing")
+        print("Thank-you for playing Maths Hangman!")
         return False
 
 

@@ -10,6 +10,7 @@ def game_header():
     print(title)
     print(rules)
 
+
 def game_menu():
     """
     Prints the game menu options to the board
@@ -17,6 +18,7 @@ def game_menu():
     menu = ["1. Addition"]
     print("Game options:\n")
     print(menu[0])
+
 
 def get_game_type():
     """
@@ -32,6 +34,7 @@ def get_game_type():
         except ValueError:
             print("\nNot a valid game option.")
 
+
 def get_answer(question):
     """
     Asks the user for their answer
@@ -39,6 +42,7 @@ def get_answer(question):
     print("Answer:")
     result = int(input(""))
     return result
+
 
 def check_solution(user_solution, solution, increment):
     """
@@ -52,7 +56,11 @@ def check_solution(user_solution, solution, increment):
         print(f"\nIncorrect. The correct answer is {solution}.")
         return increment
 
+
 def give_results(total, correct, incorrect):
+    """
+    Gives the user the final scores at the end of game play
+    """
     percentage = round((correct / total) * 100)
     if incorrect == 6:
         print(f"\nYou lost! Better luck next time!")
@@ -60,6 +68,7 @@ def give_results(total, correct, incorrect):
     else:
         print(f"\nCongratulations! You beat The Hangman!")
         print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
+
 
 def game_play(index, increment):
     """
@@ -83,22 +92,30 @@ def main():
     """
     Run all program functions
     """
-    total = 0
-    correct = 0
-    incorrect = 0
-    game_header()
-    game_menu()
-    choice = get_game_type()
-    while incorrect < 6 and total < 15:
-        total = total + 1
-        correct = game_play(choice, correct)
-        incorrect = total - correct
-        if incorrect == 6 or total == 15:
-            give_results(total, correct, incorrect)
+    play_game = True
+    while play_game == True:  
+        total = 0
+        correct = 0
+        incorrect = 0
+        game_header()
+        game_menu()
+        choice = get_game_type()
+        while incorrect < 6 and total < 15:
+            total = total + 1
+            correct = game_play(choice, correct)
+            incorrect = total - correct
+            if incorrect == 6 or total == 15:
+                give_results(total, correct, incorrect)
+            else:
+                print(f"Score: {correct}/{total}")
+                print(f"Incorrect: {incorrect}")
+        print("Play Again? (y/n)")
+        play_again = (input(""))
+        if play_again == "y":
+            play_game = True
         else:
-            print(f"Score: {correct}/{total}")
-            print(f"Incorrect: {incorrect}")
-    #give_results(total, correct, incorrect)
+            play_game = False
+            print("Thank-you for playing")
 
     
 

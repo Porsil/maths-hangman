@@ -69,12 +69,50 @@ def check_solution(user_solution, solution, increment):
         return increment
     else:
         print(f"\nIncorrect. The correct answer is {solution}.")
+        return increment
+
+
+def hangman(incorrect):
+    """
+    Prints the hangman with a new body part
+    everytime an answer is incorrect
+    """
+    if incorrect == 1:
+        print("_____")
+        print("|   O")
+        print("|")
+        print("|")
+        print("|_____")
+    elif incorrect == 2:
+        print("_____")
+        print("|   O")
+        print("|   |")
+        print("|")
+        print("|_____")
+    elif incorrect == 3:
+        print("_____")
+        print("|   O")
+        print("|  /|")
+        print("|")
+        print("|_____")
+    elif incorrect == 4:
+        print("_____")
+        print("|   O")
+        print("|  /|\ ")
+        print("|")
+        print("|_____")
+    elif incorrect == 5:
+        print("_____")
+        print("|   O")
+        print("|  /|\ ")
+        print("|  /")
+        print("|_____")
+    elif incorrect == 6:
         print("_____")
         print("|   O")
         print("|  /|\ ")
         print("|  / \ ")
         print("|_____")
-        return increment
 
 
 def give_results(total, correct, incorrect):
@@ -121,11 +159,11 @@ def main():
             total = total + 1
             correct = game_play(choice, correct, total)
             incorrect = total - correct
+            hangman(incorrect)
             if incorrect == 6 or total == 15:
                 give_results(total, correct, incorrect)
             else:
                 print(f"Score: {correct}/{total}")
-                print(f"Incorrect: {incorrect}")
         play_game = play_again()
 
     

@@ -52,6 +52,15 @@ def check_solution(user_solution, solution, increment):
         print(f"\nIncorrect. The correct answer is {solution}.")
         return increment
 
+def give_results(total, correct, incorrect):
+    percentage = round((correct / total) * 100)
+    if incorrect == 6:
+        print(f"\nYou lost! Better luck next time!")
+        print(f"Final score: {correct}/{total}. Percentage: {percentage}%.")
+    else:
+        print(f"\nCongratulations! You beat The Hangman!")
+        print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
+
 def game_play(index, increment):
     """
     Gets 2 random numbers between 1 and 25 and
@@ -80,20 +89,13 @@ def main():
     game_header()
     game_menu()
     choice = get_game_type()
-    while incorrect <=5 and total < 15:
+    while incorrect < 6 and total < 15:
         total = total + 1
         correct = game_play(choice, correct)
         incorrect = total - correct
         print(f"Score: {correct}/{total}")
         print(f"Incorrect: {incorrect}")
-    if incorrect == 6:
-        percentage = round((correct / total) * 100)
-        print(f"\nYou lost! Better luck next time!")
-        print(f"Final score: {correct}/{total}. Percentage: {percentage}%.")
-    else:
-        percentage = round((correct / total) * 100)
-        print(f"\nCongratulations! You beat The Hangman!")
-        print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
+    give_results(total, correct, incorrect)
 
     
 

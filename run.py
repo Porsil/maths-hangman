@@ -4,10 +4,14 @@ def game_header():
     """
     Prints the game title and rules to the board
     """
-    title = "\n** Maths Hangman **\n"
-    rules = "Game Rules are.....\n"
-    print(title)
-    print(rules)
+    print("*******************")
+    print("*  MATHS HANGMAN  *")
+    print("*******************\n")
+    print("How to play:\n")
+    print("Select desired maths questions from the game options")
+    print("You will be given 15 questions to answer")
+    print("Each incorrect answer will add to the hangman")
+    print("Answer all questions before the hangman is complete to win\n")
 
 
 def game_menu():

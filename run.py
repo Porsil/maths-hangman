@@ -78,11 +78,12 @@ def game_play(index, increment, total):
     number_one = random.randrange(1, 26)
     number_two = random.randrange(1, 26)
     if index == 1:
-        question = str(number_one) + " + " + str(number_two) + " ="
+        symbol = " + "
         solution = number_one + number_two
-        user_solution = get_answer(total, question)
-        increment = check_solution(user_solution, solution, increment)
-        return increment
+    question = str(number_one) + (symbol) + str(number_two) + " ="
+    user_solution = get_answer(total, question)
+    increment = check_solution(user_solution, solution, increment)
+    return increment
         
 
 
@@ -107,9 +108,9 @@ def main():
             else:
                 print(f"Score: {correct}/{total}")
                 print(f"Incorrect: {incorrect}")
-        print("Play Again? (y/n)")
+        print(f"Play Again? (y/n)", end = " ")
         play_again = (input(""))
-        if play_again == "y":
+        if play_again == "y" or play_again == "Y":
             play_game = True
         else:
             play_game = False

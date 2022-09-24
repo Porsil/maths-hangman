@@ -76,10 +76,11 @@ def main():
     """
     total = 0
     correct = 0
+    incorrect = 0
     game_header()
     game_menu()
     choice = get_game_type()
-    while total < 15:
+    while incorrect <=5 and total < 15:
         total = total + 1
         correct = game_play(choice, correct)
         incorrect = total - correct

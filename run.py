@@ -1,4 +1,3 @@
-import math
 import random
 
 def game_header():
@@ -35,6 +34,22 @@ def get_game_type():
             print("\nNot a valid game option.")
 
 
+def game_play(index, increment, total):
+    """
+    Gets 2 random numbers between 1 and 25 and
+    prints the appropriate maths question
+    """
+    number_one = random.randrange(1, 26)
+    number_two = random.randrange(1, 26)
+    if index == 1:
+        symbol = " + "
+        solution = number_one + number_two
+    question = str(number_one) + (symbol) + str(number_two) + " ="
+    user_solution = get_answer(total, question)
+    increment = check_solution(user_solution, solution, increment)
+    return increment
+
+
 def get_answer(total, question):
     """
     Asks the user for their answer
@@ -54,6 +69,11 @@ def check_solution(user_solution, solution, increment):
         return increment
     else:
         print(f"\nIncorrect. The correct answer is {solution}.")
+        print("_____")
+        print("|   O")
+        print("|  /|\ ")
+        print("|  / \ ")
+        print("|_____")
         return increment
 
 
@@ -70,29 +90,13 @@ def give_results(total, correct, incorrect):
         print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
 
 
-def game_play(index, increment, total):
-    """
-    Gets 2 random numbers between 1 and 25 and
-    prints the appropriate maths question
-    """
-    number_one = random.randrange(1, 26)
-    number_two = random.randrange(1, 26)
-    if index == 1:
-        symbol = " + "
-        solution = number_one + number_two
-    question = str(number_one) + (symbol) + str(number_two) + " ="
-    user_solution = get_answer(total, question)
-    increment = check_solution(user_solution, solution, increment)
-    return increment
-        
-
 def play_again():
     """
     Asks the user if they want to play the game again
     Re-plays the game is y is answered
     Ends the game if n is answered
     """
-    print(f"Play Again? (y/n)", end = " ")
+    print(f"\nPlay Again? (y/n)", end = " ")
     play_again = (input(""))
     if play_again == "y" or play_again == "Y":
         return True

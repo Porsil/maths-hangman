@@ -35,11 +35,11 @@ def get_game_type():
             print("\nNot a valid game option.")
 
 
-def get_answer(question):
+def get_answer(total, question):
     """
     Asks the user for their answer
     """
-    print("Answer:")
+    print(f"\nQuestion {total}: {question}", end=" ")
     result = int(input(""))
     return result
 
@@ -70,7 +70,7 @@ def give_results(total, correct, incorrect):
         print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
 
 
-def game_play(index, increment):
+def game_play(index, increment, total):
     """
     Gets 2 random numbers between 1 and 25 and
     prints the appropriate maths question
@@ -78,11 +78,9 @@ def game_play(index, increment):
     number_one = random.randrange(1, 26)
     number_two = random.randrange(1, 26)
     if index == 1:
-        print("\nQuestion:")
-        question = str(number_one) + " + " + str(number_two) + " =\n"
+        question = str(number_one) + " + " + str(number_two) + " ="
         solution = number_one + number_two
-        print(question)
-        user_solution = get_answer(question)
+        user_solution = get_answer(total, question)
         increment = check_solution(user_solution, solution, increment)
         return increment
         
@@ -102,7 +100,7 @@ def main():
         choice = get_game_type()
         while incorrect < 6 and total < 15:
             total = total + 1
-            correct = game_play(choice, correct)
+            correct = game_play(choice, correct, total)
             incorrect = total - correct
             if incorrect == 6 or total == 15:
                 give_results(total, correct, incorrect)

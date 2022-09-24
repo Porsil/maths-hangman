@@ -14,9 +14,12 @@ def game_menu():
     """
     Prints the game menu options to the board
     """
-    menu = ["1. Addition"]
+    menu = ["1. Addition", "2. Subtraction", "3. Multiplication", "4. Division"]
     print("Game options:\n")
     print(menu[0])
+    print(menu[1])
+    print(menu[2])
+    print(menu[3])
 
 
 def get_game_type():
@@ -39,12 +42,26 @@ def game_play(index, increment, total):
     Gets 2 random numbers between 1 and 25 and
     prints the appropriate maths question
     """
-    number_one = random.randrange(1, 26)
-    number_two = random.randrange(1, 26)
     if index == 1:
-        symbol = " + "
+        number_one = random.randrange(1, 26)
+        number_two = random.randrange(1, 26)
+        question = str(number_one) + " + " + str(number_two) + " ="
         solution = number_one + number_two
-    question = str(number_one) + (symbol) + str(number_two) + " ="
+    elif index == 2:
+        number_one = random.randrange(1, 26)
+        number_two = random.randrange(1, 26)
+        question = str(max(number_one, number_two)) + " - " + str(min(number_one, number_two)) + " ="
+        solution = max(number_one, number_two) - min(number_one, number_two)
+    elif index == 3:
+        number_one = random.randrange(1, 13)
+        number_two = random.randrange(1, 13)
+        question = str(number_one) + " x " + str(number_two) + " ="
+        solution = number_one * number_two
+    elif index == 4:
+        number_one = random.randrange(1, 13)
+        number_two = random.randrange(1, 13)
+        question = str(number_one * number_two) + " / " + str(number_two) + " ="
+        solution = (number_one * number_two) / number_two
     user_solution = get_answer(total, question)
     increment = check_solution(user_solution, solution, increment)
     return increment
@@ -68,6 +85,7 @@ def check_solution(user_solution, solution, increment):
         increment = increment + 1
         return increment
     else:
+        solution = round(solution)
         print(f"\nIncorrect. The correct answer is {solution}.")
         return increment
 

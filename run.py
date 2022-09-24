@@ -86,7 +86,14 @@ def main():
         incorrect = total - correct
         print(f"Score: {correct}/{total}")
         print(f"Incorrect: {incorrect}")
-
+    if incorrect == 6:
+        percentage = round((correct / total) * 100)
+        print(f"\nYou lost! Better luck next time!")
+        print(f"Final score: {correct}/{total}. Percentage: {percentage}%.")
+    else:
+        percentage = round((correct / total) * 100)
+        print(f"\nCongratulations! You beat The Hangman!")
+        print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
 
     
 

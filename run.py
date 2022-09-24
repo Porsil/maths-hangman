@@ -18,12 +18,13 @@ def game_menu():
     """
     Prints the game menu options to the board
     """
-    menu = ["1. Addition", "2. Subtraction", "3. Multiplication", "4. Division"]
+    menu = ["1. Addition", "2. Subtraction", "3. Multiplication", "4. Division", "5. Quit"]
     print("Game options:")
     print("   " + menu[0])
     print("   " + menu[1])
     print("   " + menu[2])
     print("   " + menu[3])
+    print("   " + menu[4])
 
 
 def get_game_type():
@@ -161,9 +162,11 @@ def play_again():
     if play_again == "y" or play_again == "Y":
         return True
     else:
-        print("Thank-you for playing Maths Hangman!")
-        return False
+        play_game = end_game()
 
+def end_game():
+    print("\nThank-you for playing Maths Hangman!\n")
+    return False
 
 def main():
     """
@@ -177,16 +180,19 @@ def main():
         game_header()
         game_menu()
         choice = get_game_type()
-        while incorrect < 6 and total < 15:
-            total = total + 1
-            correct = game_play(choice, correct, total)
-            incorrect = total - correct
-            hangman(incorrect)
-            if incorrect == 6 or total == 15:
-                give_results(total, correct, incorrect)
-            else:
-                print(f"Score: {correct}/{total}")
-        play_game = play_again()
+        if choice == 5:
+            play_game = end_game()
+        else:
+            while incorrect < 6 and total < 15:
+                total = total + 1
+                correct = game_play(choice, correct, total)
+                incorrect = total - correct
+                hangman(incorrect)
+                if incorrect == 6 or total == 15:
+                    give_results(total, correct, incorrect)
+                else:
+                    print(f"Score: {correct}/{total}")
+            play_game = play_again()
 
     
 

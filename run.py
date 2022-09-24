@@ -86,6 +86,20 @@ def game_play(index, increment, total):
     return increment
         
 
+def play_again():
+    """
+    Asks the user if they want to play the game again
+    Re-plays the game is y is answered
+    Ends the game if n is answered
+    """
+    print(f"Play Again? (y/n)", end = " ")
+    play_again = (input(""))
+    if play_again == "y" or play_again == "Y":
+        return True
+    else:
+        print("Thank-you for playing")
+        return False
+
 
 def main():
     """
@@ -108,13 +122,7 @@ def main():
             else:
                 print(f"Score: {correct}/{total}")
                 print(f"Incorrect: {incorrect}")
-        print(f"Play Again? (y/n)", end = " ")
-        play_again = (input(""))
-        if play_again == "y" or play_again == "Y":
-            play_game = True
-        else:
-            play_game = False
-            print("Thank-you for playing")
+        play_game = play_again()
 
     
 

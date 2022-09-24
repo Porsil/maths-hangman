@@ -93,9 +93,12 @@ def main():
         total = total + 1
         correct = game_play(choice, correct)
         incorrect = total - correct
-        print(f"Score: {correct}/{total}")
-        print(f"Incorrect: {incorrect}")
-    give_results(total, correct, incorrect)
+        if incorrect == 6 or total == 15:
+            give_results(total, correct, incorrect)
+        else:
+            print(f"Score: {correct}/{total}")
+            print(f"Incorrect: {incorrect}")
+    #give_results(total, correct, incorrect)
 
     
 

@@ -4,7 +4,7 @@ def game_header():
     """
     Prints the game title and rules to the board
     """
-    print("*******************")
+    print("\n*******************")
     print("*  MATHS HANGMAN  *")
     print("*******************\n")
     print("How to play:")
@@ -35,14 +35,14 @@ def get_game_type():
         try:
             game_type = int(input("\nEnter an option to play: "))
             if game_type <= 0 or game_type > 5:
-                print("\nNot a valid game option.")
+                print("\nNot a valid game option. Enter a number between 1 and 5.")
             else:
                 return game_type
         except ValueError:
-            print("\nNot a valid game option.")
+            print("\nNot a valid game option. Enter a number between 1 and 5.")
 
 
-def game_play(index, increment, total):
+def ask_question(index, increment, total):
     """
     Gets 2 random numbers between 1 and 25 and
     prints the appropriate maths question
@@ -157,16 +157,26 @@ def play_again():
     Re-plays the game is y is answered
     Ends the game if n is answered
     """
-    print(f"\nPlay Again? (y/n)", end = " ")
-    play_again = (input(""))
-    if play_again == "y" or play_again == "Y":
-        return True
-    else:
-        play_game = end_game()
+    while True:
+        print(f"\nPlay Again? (y/n)", end = " ")
+        play_again = (input(""))
+        if play_again == "y" or play_again == "Y":
+            play_again = True
+            return play_again
+        elif play_again == "n" or play_again == "N":
+            play_again = end_game()
+            return False
+        else:
+            print("\nNot a valid option. Please enter y for yes or n for no.")
+
 
 def end_game():
+    """
+    Ends the game
+    """
     print("\nThank-you for playing Maths Hangman!\n")
     return False
+
 
 def main():
     """
@@ -185,7 +195,7 @@ def main():
         else:
             while incorrect < 6 and total < 15:
                 total = total + 1
-                correct = game_play(choice, correct, total)
+                correct = ask_question(choice, correct, total)
                 incorrect = total - correct
                 hangman(incorrect)
                 if incorrect == 6 or total == 15:
@@ -195,8 +205,5 @@ def main():
             play_game = play_again()
 
     
-
-
-
 main()
 

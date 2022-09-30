@@ -69,36 +69,34 @@ def get_game_difficulty():
             print("\nNot a valid game option. Enter a number between 1 and 4.")
 
 
-def get_numbers_add_sub(game_difficulty):
+def game_message(game_type, game_difficulty):
     """
-    Gets 2 random numbers for the addition and subtraction
-    game types, dependant on the difficulty selected
+    Displays a message to inform user of game choices
     """
-    if game_difficulty == 1:
-        number = random.randrange(1, 26)
-        return number
-    elif game_difficulty == 2:
-        number = random.randrange(1, 101)
-        return number
-    elif game_difficulty == 3:
-        number = random.randrange(1, 501)
-        return number
-
-
-def get_numbers_mult_div(game_difficulty):
-    """
-    Gets 2 random numbers for the multiplication and division
-    game types, dependant on the difficulty selected
-    """
-    if game_difficulty == 1:
-        number = random.randrange(1, 13)
-        return number
-    elif game_difficulty == 2:
-        number = random.randrange(1, 26)
-        return number
-    elif game_difficulty == 3:
-        number = random.randrange(1, 51)
-        return number
+    if game_type == 1 and game_difficulty == 1:
+        print("\nYou have selected Addition - Easy")
+    elif game_type == 1 and game_difficulty == 2:
+        print("\nYou have selected Addition - Medium")
+    elif game_type == 1 and game_difficulty == 3:
+        print("\nYou have selected Addition - Hard")
+    elif game_type == 2 and game_difficulty == 1:
+        print("\nYou have selected Subtraction - Easy")
+    elif game_type == 2 and game_difficulty == 2:
+        print("\nYou have selected Subtraction - Medium")
+    elif game_type == 2 and game_difficulty == 3:
+        print("\nYou have selected Subtraction - Hard")
+    elif game_type == 3 and game_difficulty == 1:
+        print("\nYou have selected Multiplication - Easy")
+    elif game_type == 3 and game_difficulty == 2:
+        print("\nYou have selected Multiplication - Medium")
+    elif game_type == 3 and game_difficulty == 3:
+        print("\nYou have selected Multiplication - Hard")
+    elif game_type == 4 and game_difficulty == 1:
+        print("\nYou have selected Division - Easy")
+    elif game_type == 4 and game_difficulty == 2:
+        print("\nYou have selected Division - Medium")
+    elif game_type == 4 and game_difficulty == 3:
+        print("\nYou have selected Division - Hard")
 
 
 def ask_question(game_type, game_difficulty, increment, total):
@@ -130,6 +128,38 @@ def ask_question(game_type, game_difficulty, increment, total):
     user_solution = get_answer(total, question)
     increment = check_solution(user_solution, solution, increment)
     return increment
+
+
+def get_numbers_add_sub(game_difficulty):
+    """
+    Gets 2 random numbers for the addition and subtraction
+    game types, dependant on the difficulty selected
+    """
+    if game_difficulty == 1:
+        number = random.randrange(1, 26)
+        return number
+    elif game_difficulty == 2:
+        number = random.randrange(1, 101)
+        return number
+    elif game_difficulty == 3:
+        number = random.randrange(1, 501)
+        return number
+
+
+def get_numbers_mult_div(game_difficulty):
+    """
+    Gets 2 random numbers for the multiplication and division
+    game types, dependant on the difficulty selected
+    """
+    if game_difficulty == 1:
+        number = random.randrange(1, 13)
+        return number
+    elif game_difficulty == 2:
+        number = random.randrange(1, 26)
+        return number
+    elif game_difficulty == 3:
+        number = random.randrange(1, 51)
+        return number
 
 
 def get_answer(total, question):
@@ -274,6 +304,7 @@ def main():
             if game_difficulty == 4:
                 play_game = end_game()
             else:
+                game_message(game_type, game_difficulty)
                 game_play(game_type, game_difficulty, total, correct, incorrect)
                 play_game = play_again()
 

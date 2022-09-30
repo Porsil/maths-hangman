@@ -8,7 +8,8 @@ def game_header():
     print("*  MATHS HANGMAN  *")
     print("*******************\n")
     print("How to play:")
-    print("   Select desired maths questions from the game options")
+    print("   Select desired maths questions from the options given")
+    print("   Select desired difficulty from the options given")
     print("   You will be given 15 questions to answer")
     print("   Each incorrect answer will add to the hangman")
     print("   Answer all questions before the hangman is complete to win")
@@ -19,6 +20,7 @@ def game_menu():
     Prints the game menu options to the board
     """
     menu_1 = ["1. Addition", "2. Subtraction", "3. Multiplication", "4. Division", "5. Quit"]
+    
     print("\nGame options:")
     print("   " + menu_1[0])
     print("   " + menu_1[1])
@@ -47,6 +49,7 @@ def difficulty_menu():
     Prints the game difficulty options to the board
     """
     menu_2 = ["1. Easy", "2. Medium", "3. Hard", "4. Quit"]
+    
     print("\nDifficulty options:")
     print("   " + menu_2[0])
     print("   " + menu_2[1])
@@ -81,12 +84,14 @@ def game_message(game_type, game_difficulty):
         game_type = "Multiplication"
     elif game_type == 4:
         game_type = "Division"
+
     if game_difficulty == 1:
         game_difficulty = "Easy"
     elif game_difficulty == 2:
         game_difficulty = "Medium"
     elif game_difficulty == 3:
         game_difficulty = "Hard"
+
     print(f"\nYou have selected {game_type} - {game_difficulty}")
 
 
@@ -116,8 +121,10 @@ def ask_question(game_type, game_difficulty, increment, total):
         number_two = get_numbers_mult_div(game_difficulty)
         question = str(number_one * number_two) + " / " + str(number_two) + " ="
         solution = (number_one * number_two) / number_two
+    
     user_solution = get_answer(total, question)
     increment = check_solution(user_solution, solution, increment)
+
     return increment
 
 
@@ -301,4 +308,3 @@ def main():
 
     
 main()
-

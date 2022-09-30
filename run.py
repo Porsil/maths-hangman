@@ -44,8 +44,9 @@ def get_game_type():
 
 def ask_question(index, increment, total):
     """
-    Gets 2 random numbers between 1 and 25 and
+    Gets 2 random numbers between 1 and 25,
     prints the appropriate maths question
+    and calculates the correct answer
     """
     if index == 1:
         number_one = random.randrange(1, 26)
@@ -178,6 +179,18 @@ def end_game():
     return False
 
 
+def game_play(game_type, total, correct, incorrect):
+    while incorrect < 6 and total < 15:
+        total = total + 1
+        correct = ask_question(game_type, correct, total)
+        incorrect = total - correct
+        hangman(incorrect)
+        if incorrect == 6 or total == 15:
+            give_results(total, correct, incorrect)
+        else:
+            print(f"Score: {correct}/{total}")
+
+
 def main():
     """
     Run all program functions
@@ -189,19 +202,20 @@ def main():
         incorrect = 0
         game_header()
         game_menu()
-        choice = get_game_type()
-        if choice == 5:
+        game_type = get_game_type()
+        if game_type == 5:
             play_game = end_game()
         else:
-            while incorrect < 6 and total < 15:
-                total = total + 1
-                correct = ask_question(choice, correct, total)
-                incorrect = total - correct
-                hangman(incorrect)
-                if incorrect == 6 or total == 15:
-                    give_results(total, correct, incorrect)
-                else:
-                    print(f"Score: {correct}/{total}")
+            game_play(game_type, total, correct, incorrect)
+            #while incorrect < 6 and total < 15:
+                #total = total + 1
+                #correct = ask_question(game_type, correct, total)
+                #incorrect = total - correct
+                #hangman(incorrect)
+                #if incorrect == 6 or total == 15:
+                    #give_results(total, correct, incorrect)
+                #else:
+                    #print(f"Score: {correct}/{total}")
             play_game = play_again()
 
     

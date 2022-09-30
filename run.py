@@ -73,30 +73,21 @@ def game_message(game_type, game_difficulty):
     """
     Displays a message to inform user of game choices
     """
-    if game_type == 1 and game_difficulty == 1:
-        print("\nYou have selected Addition - Easy")
-    elif game_type == 1 and game_difficulty == 2:
-        print("\nYou have selected Addition - Medium")
-    elif game_type == 1 and game_difficulty == 3:
-        print("\nYou have selected Addition - Hard")
-    elif game_type == 2 and game_difficulty == 1:
-        print("\nYou have selected Subtraction - Easy")
-    elif game_type == 2 and game_difficulty == 2:
-        print("\nYou have selected Subtraction - Medium")
-    elif game_type == 2 and game_difficulty == 3:
-        print("\nYou have selected Subtraction - Hard")
-    elif game_type == 3 and game_difficulty == 1:
-        print("\nYou have selected Multiplication - Easy")
-    elif game_type == 3 and game_difficulty == 2:
-        print("\nYou have selected Multiplication - Medium")
-    elif game_type == 3 and game_difficulty == 3:
-        print("\nYou have selected Multiplication - Hard")
-    elif game_type == 4 and game_difficulty == 1:
-        print("\nYou have selected Division - Easy")
-    elif game_type == 4 and game_difficulty == 2:
-        print("\nYou have selected Division - Medium")
-    elif game_type == 4 and game_difficulty == 3:
-        print("\nYou have selected Division - Hard")
+    if game_type == 1:
+        game_type = "Addition"
+    elif game_type == 2:
+        game_type = "Subtraction"
+    elif game_type == 3:
+        game_type = "Multiplication"
+    elif game_type == 4:
+        game_type = "Division"
+    if game_difficulty == 1:
+        game_difficulty = "Easy"
+    elif game_difficulty == 2:
+        game_difficulty = "Medium"
+    elif game_difficulty == 3:
+        game_difficulty = "Hard"
+    print(f"\nYou have selected {game_type} - {game_difficulty}")
 
 
 def ask_question(game_type, game_difficulty, increment, total):

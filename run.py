@@ -1,3 +1,9 @@
+"""
+Python code for Maths Hangman:
+A terminal based maths game
+"""
+
+# Import libraries
 import random
 import time
 
@@ -6,29 +12,30 @@ def game_header():
     """
     Prints the game title and rules to the board
     """
-    print("\n*******************")
-    print("*  MATHS HANGMAN  *")
-    print("*******************\n")
-    print("How to play:")
-    print("   Select desired maths questions from the options given")
-    print("   Select desired difficulty from the options given")
-    print("   You will be given 15 questions to answer")
-    print("   Each incorrect answer will add to the hangman")
-    print("   Answer all questions before the hangman is complete to win")
+    game_title = ("\n*******************"
+                  "*  MATHS HANGMAN  *"
+                  "*******************\n")
+    game_rules = ("How to play: \n"
+                  "   Select desired maths questions from the options given\n"
+                  "   Select desired difficulty from the options given\n"
+                  "   You will be given 15 questions to answer\n"
+                  "   Each incorrect answer will add to the hangman\n"
+                  "   Answer all questions before the hangman is"
+                  " complete to win")
+    print(game_title)
+    print(game_rules)
 
 
 def game_menu():
     """
     Prints the game menu options to the board
     """
-    menu_1 = ["1. Addition", "2. Subtraction", "3. Multiplication", "4. Division", "5. Quit"]
-    
+    menu_1 = ["1. Addition", "2. Subtraction", "3. Multiplication",
+              "4. Division", "5. Quit"]
+
     print("\nGame options:")
-    print("   " + menu_1[0])
-    print("   " + menu_1[1])
-    print("   " + menu_1[2])
-    print("   " + menu_1[3])
-    print("   " + menu_1[4])
+    for type in menu_1:
+        print("   " + type)
 
 
 def get_game_type():
@@ -39,7 +46,8 @@ def get_game_type():
         try:
             game_type = int(input("\nEnter an option to play: "))
             if game_type <= 0 or game_type > 5:
-                print("\nNot a valid game option. Enter a number between 1 and 5.")
+                print("\nNot a valid game option."
+                      "Enter a number between 1 and 5.")
             else:
                 return game_type
         except ValueError:
@@ -51,8 +59,10 @@ def difficulty_menu():
     Prints the game difficulty options to the board
     """
     menu_2 = ["1. Easy", "2. Medium", "3. Hard", "4. Quit"]
-    
+
     print("\nDifficulty options:")
+    for difficulty in menu_2:
+        print("   " + difficulty)
     print("   " + menu_2[0])
     print("   " + menu_2[1])
     print("   " + menu_2[2])
@@ -67,7 +77,8 @@ def get_game_difficulty():
         try:
             game_difficulty = int(input("\nEnter an option to play: "))
             if game_difficulty <= 0 or game_difficulty > 4:
-                print("\nNot a valid game option. Enter a number between 1 and 4.")
+                print("\nNot a valid game option."
+                      "Enter a number between 1 and 4.")
             else:
                 return game_difficulty
         except ValueError:
@@ -76,7 +87,8 @@ def get_game_difficulty():
 
 def game_message(game_type, game_difficulty):
     """
-    Displays a message to inform user of game choices
+    Retrieves the game type and difficulty and
+    displays a message to inform user of game choices
     """
     if game_type == 1:
         game_type = "Addition"
@@ -100,8 +112,8 @@ def game_message(game_type, game_difficulty):
 def game_play(game_type, game_difficulty, total, correct, incorrect):
     """
     Loops through questions until the hangman is full
-    or 15 questions have been answered.
-    Calculates the time taken to play the game
+    or 15 questions have been answered and
+    calculates the time taken to play the game
     """
     start_time = time.time()
     while incorrect < 6 and total < 15:
@@ -132,7 +144,8 @@ def ask_question(game_type, game_difficulty, increment, total):
     elif game_type == 2:
         number_one = get_numbers_add_sub(game_difficulty)
         number_two = get_numbers_add_sub(game_difficulty)
-        question = str(max(number_one, number_two)) + " - " + str(min(number_one, number_two)) + " ="
+        question = (str(max(number_one, number_two)) + " - " +
+                    str(min(number_one, number_two)) + " =")
         solution = max(number_one, number_two) - min(number_one, number_two)
     elif game_type == 3:
         number_one = get_numbers_mult_div(game_difficulty)
@@ -142,9 +155,10 @@ def ask_question(game_type, game_difficulty, increment, total):
     elif game_type == 4:
         number_one = get_numbers_mult_div(game_difficulty)
         number_two = get_numbers_mult_div(game_difficulty)
-        question = str(number_one * number_two) + " / " + str(number_two) + " ="
+        question = (str(number_one * number_two) + " / " +
+                    str(number_two) + " =")
         solution = (number_one * number_two) / number_two
-    
+
     user_solution = get_answer(total, question)
     increment = check_solution(user_solution, solution, increment)
 
@@ -275,9 +289,11 @@ def give_results(total, correct, incorrect):
 def time_convert(sec):
     """
     Converts the time taken to play the game into hh:mm:ss
-    Code adapted from https://www.codespeedy.com/how-to-create-a-stopwatch-in-python/
-    and https://stackoverflow.com/questions/3505831/in-python-how-do-i-convert-a-single-digit-number-into-a-double-digits-string
     """
+    # Code adapted from
+    # https://www.codespeedy.com/how-to-create-a-stopwatch-in-python/
+    # and https://stackoverflow.com/questions/3505831/
+    # in-python-how-do-i-convert-a-single-digit-number-into-a-double-digits-string
     mins = sec // 60
     sec = int(sec % 60)
     hours = int(mins // 60)
@@ -292,7 +308,7 @@ def play_again():
     Ends the game if n is answered
     """
     while True:
-        print(f"\nPlay Again? (y/n)", end = " ")
+        print(f"\nPlay Again? (y/n)", end=" ")
         play_again = (input(""))
         if play_again == "y" or play_again == "Y":
             play_again = True
@@ -317,7 +333,7 @@ def main():
     Run all program functions
     """
     play_game = True
-    while play_game == True:  
+    while play_game is True:
         total = 0
         correct = 0
         incorrect = 0
@@ -333,8 +349,9 @@ def main():
                 play_game = end_game()
             else:
                 game_message(game_type, game_difficulty)
-                game_play(game_type, game_difficulty, total, correct, incorrect)
+                game_play(game_type, game_difficulty,
+                          total, correct, incorrect)
                 play_game = play_again()
 
-    
+
 main()

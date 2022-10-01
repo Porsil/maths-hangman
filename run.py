@@ -1,4 +1,5 @@
 import random
+import time
 
 def game_header():
     """
@@ -188,7 +189,13 @@ def hangman(incorrect):
     Prints the hangman with a new body part
     everytime an answer is incorrect
     """
-    if incorrect == 1:
+    if incorrect == 0:
+        print("_____")
+        print("|")
+        print("|")
+        print("|")
+        print("|_____")
+    elif incorrect == 1:
         print("_____")
         print("|   O")
         print("|")
@@ -233,10 +240,10 @@ def give_results(total, correct, incorrect):
     percentage = round((correct / total) * 100)
     if incorrect == 6:
         print(f"\nYou lost! Better luck next time!")
-        print(f"Final score: {correct}/{total}. Percentage: {percentage}%.")
+        print(f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
     else:
         print(f"\nCongratulations! You beat The Hangman!")
-        print(f"Final score: {correct}/{total}. Percentage: {percentage}%")
+        print(f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
 
 
 def play_again():
@@ -266,11 +273,20 @@ def end_game():
     return False
 
 
+def time_convert(sec):
+    mins = sec // 60
+    sec = int(sec % 60)
+    hours = int(mins // 60)
+    mins = int(mins % 60)
+    print(f"Time: {hours:02}:{mins:02}:{sec:02}")
+
+
 def game_play(game_type, game_difficulty, total, correct, incorrect):
     """
     Loops through questions until the hangman is full
     or 15 questions have been answered
     """
+    start_time = time.time()
     while incorrect < 6 and total < 15:
         total = total + 1
         correct = ask_question(game_type, game_difficulty, correct, total)
@@ -278,6 +294,9 @@ def game_play(game_type, game_difficulty, total, correct, incorrect):
         hangman(incorrect)
         if incorrect == 6 or total == 15:
             give_results(total, correct, incorrect)
+            end_time = time.time()
+            time_lapsed = end_time - start_time
+            time_convert(time_lapsed)
         else:
             print(f"Score: {correct}/{total}")
 

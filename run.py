@@ -12,9 +12,20 @@ def game_header():
     """
     Prints the game title and rules to the board
     """
-    game_title = ("\n*******************\n"
-                  "*  MATHS HANGMAN  *\n"
-                  "*******************\n")
+    # Game title generated using
+    # https://patorjk.com/software/taag/#p=display&f=Standard&t=
+    # %20%20%20%20%20%20%20%20%20Maths%0AHangman
+    game_title = ("\n                  __  __       _   _                   \n"
+                  "                 |  \/  | __ _| |_| |__  ___           \n"
+                  "                 | |\/| |/ _` | __| '_ \/ __|          \n"
+                  "                 | |  | | (_| | |_| | | \__ \          \n"
+                  "         _   _   |_|  |_|\__,_|\__|_| |_|___/          \n"
+                  "        | | | | __ _ _ __   __ _ _ __ ___   __ _ _ __  \n"
+                  "        | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ \n"
+                  "        |  _  | (_| | | | | (_| | | | | | | (_| | | | |\n"
+                  "        |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|\n"
+                  "                           |___/                       \n"
+                  "\n")
     game_rules = ("How to play: \n"
                   "   Select desired maths questions from the options given\n"
                   "   Select desired difficulty from the options given\n"

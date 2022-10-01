@@ -12,8 +12,8 @@ def game_header():
     """
     Prints the game title and rules to the board
     """
-    game_title = ("\n*******************"
-                  "*  MATHS HANGMAN  *"
+    game_title = ("\n*******************\n"
+                  "*  MATHS HANGMAN  *\n"
                   "*******************\n")
     game_rules = ("How to play: \n"
                   "   Select desired maths questions from the options given\n"
@@ -22,19 +22,18 @@ def game_header():
                   "   Each incorrect answer will add to the hangman\n"
                   "   Answer all questions before the hangman is"
                   " complete to win")
-    print(game_title)
-    print(game_rules)
+    print(game_title + game_rules)
 
 
 def game_menu():
     """
     Prints the game menu options to the board
     """
-    menu_1 = ["1. Addition", "2. Subtraction", "3. Multiplication",
-              "4. Division", "5. Quit"]
+    types = ["1. Addition", "2. Subtraction", "3. Multiplication",
+             "4. Division", "5. Quit"]
 
     print("\nGame options:")
-    for type in menu_1:
+    for type in types:
         print("   " + type)
 
 
@@ -58,15 +57,11 @@ def difficulty_menu():
     """
     Prints the game difficulty options to the board
     """
-    menu_2 = ["1. Easy", "2. Medium", "3. Hard", "4. Quit"]
+    difficulties = ["1. Easy", "2. Medium", "3. Hard", "4. Quit"]
 
     print("\nDifficulty options:")
-    for difficulty in menu_2:
+    for difficulty in difficulties:
         print("   " + difficulty)
-    print("   " + menu_2[0])
-    print("   " + menu_2[1])
-    print("   " + menu_2[2])
-    print("   " + menu_2[3])
 
 
 def get_game_difficulty():
@@ -230,47 +225,47 @@ def hangman(incorrect):
     everytime an answer is incorrect
     """
     if incorrect == 0:
-        print("_____")
-        print("|")
-        print("|")
-        print("|")
-        print("|_____")
+        print("_____\n"
+              "|\n"
+              "|\n"
+              "|\n"
+              "|_____")
     elif incorrect == 1:
-        print("_____")
-        print("|   O")
-        print("|")
-        print("|")
-        print("|_____")
+        print("_____\n"
+              "|   O\n"
+              "|\n"
+              "|\n"
+              "|_____")
     elif incorrect == 2:
-        print("_____")
-        print("|   O")
-        print("|   |")
-        print("|")
-        print("|_____")
+        print("_____\n"
+              "|   O\n"
+              "|   |\n"
+              "|\n"
+              "|_____")
     elif incorrect == 3:
-        print("_____")
-        print("|   O")
-        print("|  /|")
-        print("|")
-        print("|_____")
+        print("_____\n"
+              "|   O\n"
+              "|  /|\n"
+              "|\n"
+              "|_____")
     elif incorrect == 4:
-        print("_____")
-        print("|   O")
-        print("|  /|\ ")
-        print("|")
-        print("|_____")
+        print("_____\n"
+              "|   O\n"
+              "|  /|\ \n"
+              "|\n"
+              "|_____")
     elif incorrect == 5:
-        print("_____")
-        print("|   O")
-        print("|  /|\ ")
-        print("|  /")
-        print("|_____")
+        print("_____\n"
+              "|   O\n"
+              "|  /|\ \n"
+              "|  /\n"
+              "|_____")
     elif incorrect == 6:
-        print("_____")
-        print("|   O")
-        print("|  /|\ ")
-        print("|  / \ ")
-        print("|_____")
+        print("_____\n"
+              "|   O\n"
+              "|  /|\ \n"
+              "|  / \ \n"
+              "|_____")
 
 
 def give_results(total, correct, incorrect):
@@ -279,11 +274,11 @@ def give_results(total, correct, incorrect):
     """
     percentage = round((correct / total) * 100)
     if incorrect == 6:
-        print(f"\nYou lost! Better luck next time!")
-        print(f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
+        print(f"\nYou lost! Better luck next time!\n"
+              f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
     else:
-        print(f"\nCongratulations! You beat The Hangman!")
-        print(f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
+        print(f"\nCongratulations! You beat The Hangman!\n"
+              f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
 
 
 def time_convert(sec):

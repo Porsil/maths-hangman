@@ -1,31 +1,29 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# <h1 align="center">**MATHS HANGMAN**</h1>
 
-Welcome Porsil,
+[View the live project here](https://maths-hangman.herokuapp.com/)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+![Game Title](readme_assets/Title.png)
 
-## Reminders
+This is terminal game of Maths Hangman. A twist on the classic hangman game where maths questions are answered instead of guessing lessons.
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## Objectives
+The objective of the application is to provide a command line game of Maths Hangman that is deployed online via a 'mock terminal'. The application should provide clear instructions and feedback to the user, including validation of imput from the user. The object of the game is to answer 15 maths questions and every incorrect answer adds a body part to the hangman. After 6 incorrect answers, the hangman is complete and the game is lost! 
 
-## Creating the Heroku app
+### Visitor Goals
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+1. Enjoy a maths game that also helps improve maths skills.
+2. Be provided clear instructions of how to play the game.
+3. Have options on what type of maths questions will be given.
+4. Have options on what difficulty the maths questions will be.
+5. See feedback on current score and how full the hangman is.
+6. Be informed if my input is not valid and be given the chance to try again.
+7. Be given feedback at the end of the game of my performance.
+8. Have the option to keep playing the game if desired.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### Flowchart
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+![Flowchart](readme_assets/Flowchart.png)
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+## Features
 
-Connect your GitHub repository and deploy as normal.
 
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!

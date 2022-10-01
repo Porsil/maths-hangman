@@ -1,6 +1,7 @@
 import random
 import time
 
+
 def game_header():
     """
     Prints the game title and rules to the board
@@ -94,6 +95,27 @@ def game_message(game_type, game_difficulty):
         game_difficulty = "Hard"
 
     print(f"\nYou have selected {game_type} - {game_difficulty}")
+
+
+def game_play(game_type, game_difficulty, total, correct, incorrect):
+    """
+    Loops through questions until the hangman is full
+    or 15 questions have been answered.
+    Calculates the time taken to play the game
+    """
+    start_time = time.time()
+    while incorrect < 6 and total < 15:
+        total = total + 1
+        correct = ask_question(game_type, game_difficulty, correct, total)
+        incorrect = total - correct
+        hangman(incorrect)
+        if incorrect == 6 or total == 15:
+            give_results(total, correct, incorrect)
+            end_time = time.time()
+            time_lapsed = end_time - start_time
+            time_convert(time_lapsed)
+        else:
+            print(f"Score: {correct}/{total}")
 
 
 def ask_question(game_type, game_difficulty, increment, total):
@@ -250,6 +272,19 @@ def give_results(total, correct, incorrect):
         print(f"\nFinal score: {correct}/{total}\nPercentage: {percentage}%")
 
 
+def time_convert(sec):
+    """
+    Converts the time taken to play the game into hh:mm:ss
+    Code adapted from https://www.codespeedy.com/how-to-create-a-stopwatch-in-python/
+    and https://stackoverflow.com/questions/3505831/in-python-how-do-i-convert-a-single-digit-number-into-a-double-digits-string
+    """
+    mins = sec // 60
+    sec = int(sec % 60)
+    hours = int(mins // 60)
+    mins = int(mins % 60)
+    print(f"Time: {hours:02}:{mins:02}:{sec:02}")
+
+
 def play_again():
     """
     Asks the user if they want to play the game again and validates the answer
@@ -275,38 +310,6 @@ def end_game():
     """
     print("\nThank-you for playing Maths Hangman!\n")
     return False
-
-
-def time_convert(sec):
-    """
-    Converts the time taken to play the game into hh:mm:ss
-    """
-    mins = sec // 60
-    sec = int(sec % 60)
-    hours = int(mins // 60)
-    mins = int(mins % 60)
-    print(f"Time: {hours:02}:{mins:02}:{sec:02}")
-
-
-def game_play(game_type, game_difficulty, total, correct, incorrect):
-    """
-    Loops through questions until the hangman is full
-    or 15 questions have been answered.
-    Calculates the time taken to play the game
-    """
-    start_time = time.time()
-    while incorrect < 6 and total < 15:
-        total = total + 1
-        correct = ask_question(game_type, game_difficulty, correct, total)
-        incorrect = total - correct
-        hangman(incorrect)
-        if incorrect == 6 or total == 15:
-            give_results(total, correct, incorrect)
-            end_time = time.time()
-            time_lapsed = end_time - start_time
-            time_convert(time_lapsed)
-        else:
-            print(f"Score: {correct}/{total}")
 
 
 def main():

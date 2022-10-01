@@ -163,11 +163,15 @@ def get_numbers_mult_div(game_difficulty):
 
 def get_answer(total, question):
     """
-    Asks the user for their answer
+    Asks the user for their answer and validates the data
     """
-    print(f"\nQuestion {total}:   {question}", end=" ")
-    result = int(input(""))
-    return result
+    while True:
+        try:
+            print(f"\nQuestion {total}:   {question}", end=" ")
+            result = int(input(""))
+            return result
+        except ValueError:
+            print("\nNot a valid input. Answers should be a whole number:")
 
 
 def check_solution(user_solution, solution, increment):
@@ -248,7 +252,7 @@ def give_results(total, correct, incorrect):
 
 def play_again():
     """
-    Asks the user if they want to play the game again
+    Asks the user if they want to play the game again and validates the answer
     Re-plays the game is y is answered
     Ends the game if n is answered
     """
@@ -274,6 +278,9 @@ def end_game():
 
 
 def time_convert(sec):
+    """
+    Converts the time taken to play the game into hh:mm:ss
+    """
     mins = sec // 60
     sec = int(sec % 60)
     hours = int(mins // 60)
@@ -284,7 +291,8 @@ def time_convert(sec):
 def game_play(game_type, game_difficulty, total, correct, incorrect):
     """
     Loops through questions until the hangman is full
-    or 15 questions have been answered
+    or 15 questions have been answered.
+    Calculates the time taken to play the game
     """
     start_time = time.time()
     while incorrect < 6 and total < 15:

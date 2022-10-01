@@ -15,7 +15,7 @@ def game_header():
     # Game title generated using
     # https://patorjk.com/software/taag/#p=display&f=Standard&t=
     # %20%20%20%20%20%20%20%20%20Maths%0AHangman
-    game_title = ("\n                  __  __       _   _                   \n"
+    game_title = ("                  __  __       _   _                   \n"
                   "                 |  \/  | __ _| |_| |__  ___           \n"
                   "                 | |\/| |/ _` | __| '_ \/ __|          \n"
                   "                 | |  | | (_| | |_| | | \__ \          \n"
@@ -24,8 +24,7 @@ def game_header():
                   "        | |_| |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ \n"
                   "        |  _  | (_| | | | | (_| | | | | | | (_| | | | |\n"
                   "        |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|\n"
-                  "                           |___/                       \n"
-                  "\n")
+                  "                           |___/                       \n")
     game_rules = ("How to play: \n"
                   "   Select desired maths questions from the options given\n"
                   "   Select desired difficulty from the options given\n"

@@ -37,7 +37,7 @@ def get_game_type():
     """
     while True:
         try:
-            game_type = int(input("\nEnter an option to play: "))
+            game_type = int(input("\nEnter an option to play:\n"))
             if game_type <= 0 or game_type > 5:
                 print("\nNot a valid game option. Enter a number between 1 and 5.")
             else:
@@ -65,7 +65,7 @@ def get_game_difficulty():
     """
     while True:
         try:
-            game_difficulty = int(input("\nEnter an option to play: "))
+            game_difficulty = int(input("\nEnter an option to play:\n"))
             if game_difficulty <= 0 or game_difficulty > 4:
                 print("\nNot a valid game option. Enter a number between 1 and 4.")
             else:
@@ -190,7 +190,7 @@ def get_answer(total, question):
     while True:
         try:
             print(f"\nQuestion {total}:   {question}", end=" ")
-            result = int(input(""))
+            result = int(input("\n"))
             return result
         except ValueError:
             print("\nNot a valid input. Answers should be a whole number:")
@@ -293,7 +293,7 @@ def play_again():
     """
     while True:
         print(f"\nPlay Again? (y/n)", end = " ")
-        play_again = (input(""))
+        play_again = (input("\n"))
         if play_again == "y" or play_again == "Y":
             play_again = True
             return play_again

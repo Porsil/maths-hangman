@@ -54,7 +54,7 @@ def get_game_type():
         try:
             game_type = int(input("\nEnter an option to play: "))
             if game_type <= 0 or game_type > 5:
-                print("\nNot a valid game option."
+                print("\nNot a valid game option. "
                       "Enter a number between 1 and 5.")
             else:
                 return game_type

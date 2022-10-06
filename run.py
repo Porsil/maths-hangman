@@ -178,10 +178,10 @@ def get_numbers_add_sub(game_difficulty):
         number = random.randrange(1, 26)
         return number
     elif game_difficulty == 2:
-        number = random.randrange(1, 101)
+        number = random.randrange(25, 251)
         return number
     elif game_difficulty == 3:
-        number = random.randrange(1, 501)
+        number = random.randrange(50, 501)
         return number
 
 
@@ -194,10 +194,10 @@ def get_numbers_mult_div(game_difficulty):
         number = random.randrange(1, 13)
         return number
     elif game_difficulty == 2:
-        number = random.randrange(1, 26)
+        number = random.randrange(2, 26)
         return number
     elif game_difficulty == 3:
-        number = random.randrange(1, 51)
+        number = random.randrange(3, 51)
         return number
 
 

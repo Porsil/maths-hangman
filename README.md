@@ -94,6 +94,8 @@ An additional feature that could be implemented would be an additional game type
 ## Testing
 The game was built one feature at a time, with each feature being successfully tested without bugs before moving onto the next to slowly add the complexity to the game.
 
+The game was tested by family and friends who noted that when playing medium or hard difficulty, they would be given very easy questions, e.g. 3 + 1. To help reduce this the start range of the get_numbers functions were altered to larger numbers.
+
 ### Bugs
 - When adding validation to the input for game type the game crashed if an invalid option was entered more than once. This was fixed by adding a while True loop to the try/except statement.
 - The scores were given twice on the final question. This was fixed by adding an if statement to the game_play function to not display the score on the final question.

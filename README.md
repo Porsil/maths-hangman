@@ -87,8 +87,10 @@ All originally planned features were successfully implemented
 An additional feature that could be implemented would be an additional game type that is a mix of the mathematical operators.
 
 ## Languages and Libraries
-- The game was created using Python
-- The built-in python random and time modules were used.
+- The game was created using Python.
+- Built-in python modules were used:
+    1. Random module was used to generate random numbers for the maths questions.
+    2. Time module was used to calculated the time taken to complete the game.
 - No external libraries were used.
 
 ## Testing

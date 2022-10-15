@@ -32,6 +32,12 @@ def game_header():
                   "   Answer all questions before the hangman is"
                   " complete to win")
     print(game_title + game_rules)
+    print_line()
+
+
+def print_line():
+    print("___________________________________________________________________"
+          "_______________")
 
 
 def game_menu():
@@ -41,7 +47,7 @@ def game_menu():
     types = ["1. Addition", "2. Subtraction", "3. Multiplication",
              "4. Division", "5. Quit"]
 
-    print("\nGame options:")
+    print("Game options:")
     for type in types:
         print("   " + type)
 
@@ -68,7 +74,7 @@ def difficulty_menu():
     """
     difficulties = ["1. Easy", "2. Medium", "3. Hard", "4. Quit"]
 
-    print("\nDifficulty options:")
+    print("Difficulty options:")
     for difficulty in difficulties:
         print("   " + difficulty)
 
@@ -131,7 +137,8 @@ def game_play(game_type, game_difficulty, total, correct, incorrect):
             time_lapsed = end_time - start_time
             time_convert(time_lapsed)
         else:
-            print(f"Score: {correct}/{total}")
+            print(f"Score: {correct}/{total}\n")
+            print_line()
 
 
 def ask_question(game_type, game_difficulty, increment, total):
@@ -339,11 +346,13 @@ def main():
         if game_type == 5:
             play_game = end_game()
         else:
+            game_header()
             difficulty_menu()
             game_difficulty = get_game_difficulty()
             if game_difficulty == 4:
                 play_game = end_game()
             else:
+                game_header()
                 game_message(game_type, game_difficulty)
                 game_play(game_type, game_difficulty,
                           total, correct, incorrect)

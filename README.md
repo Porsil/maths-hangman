@@ -138,3 +138,7 @@ To deploy in Heroku:
 - The game inspiration and method for ensuring the division question generated a whole number was taken from the [Code Institute Love Maths Walkthrough](https://github.com/Code-Institute-Org/love-maths).
 - The ASCII art title was generated using [Patorjk](https://patorjk.com/software/taag/#p=display&f=Standard&t=%20%20%20%20%20%20Maths%0AHangman)
 - The game stopwatch was made by adapting code from this [CodeSpeedy post](https://www.codespeedy.com/how-to-create-a-stopwatch-in-python/) and this [Stack Overflow question](https://stackoverflow.com/questions/3505831/in-python-how-do-i-convert-a-single-digit-number-into-a-double-digits-string)
+
+###Acknowledgements
+
+My Mentor Narender Singh for their knowledge and feedback.

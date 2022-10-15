@@ -140,25 +140,19 @@ def ask_question(game_type, game_difficulty, increment, total):
     prints the appropriate maths question
     and calculates the correct answer
     """
+    number_one, number_two = get_numbers(game_type, game_difficulty)
+
     if game_type == 1:
-        number_one = get_numbers_add_sub(game_difficulty)
-        number_two = get_numbers_add_sub(game_difficulty)
         question = str(number_one) + " + " + str(number_two) + " ="
         solution = number_one + number_two
     elif game_type == 2:
-        number_one = get_numbers_add_sub(game_difficulty)
-        number_two = get_numbers_add_sub(game_difficulty)
         question = (str(max(number_one, number_two)) + " - " +
                     str(min(number_one, number_two)) + " =")
         solution = max(number_one, number_two) - min(number_one, number_two)
     elif game_type == 3:
-        number_one = get_numbers_mult_div(game_difficulty)
-        number_two = get_numbers_mult_div(game_difficulty)
         question = str(number_one) + " x " + str(number_two) + " ="
         solution = number_one * number_two
     elif game_type == 4:
-        number_one = get_numbers_mult_div(game_difficulty)
-        number_two = get_numbers_mult_div(game_difficulty)
         question = (str(number_one * number_two) + " / " +
                     str(number_two) + " =")
         solution = (number_one * number_two) / number_two
@@ -169,36 +163,34 @@ def ask_question(game_type, game_difficulty, increment, total):
     return increment
 
 
-def get_numbers_add_sub(game_difficulty):
+def get_numbers(game_type, game_difficulty):
     """
     Gets 2 random numbers for the addition and subtraction
     game types, dependant on the difficulty selected
     """
     if game_difficulty == 1:
-        number = random.randrange(1, 26)
-        return number
-    elif game_difficulty == 2:
-        number = random.randrange(25, 251)
-        return number
-    elif game_difficulty == 3:
-        number = random.randrange(50, 501)
-        return number
+        if game_type in (1, 2):
+            number_one = random.randrange(1, 26)
+            number_two = random.randrange(1, 26)
+        else:
+            number_one = random.randrange(1, 13)
+            number_two = random.randrange(1, 13)
+    if game_difficulty == 2:
+        if game_type in (1, 2):
+            number_one = random.randrange(51, 251)
+            number_two = random.randrange(25, 251)
+        else:
+            number_one = random.randrange(6, 26)
+            number_two = random.randrange(2, 26)
+    if game_difficulty == 3:
+        if game_type in (1, 2):
+            number_one = random.randrange(101, 501)
+            number_two = random.randrange(50, 501)
+        else:
+            number_one = random.randrange(11, 51)
+            number_two = random.randrange(3, 51)
 
-
-def get_numbers_mult_div(game_difficulty):
-    """
-    Gets 2 random numbers for the multiplication and division
-    game types, dependant on the difficulty selected
-    """
-    if game_difficulty == 1:
-        number = random.randrange(1, 13)
-        return number
-    elif game_difficulty == 2:
-        number = random.randrange(2, 26)
-        return number
-    elif game_difficulty == 3:
-        number = random.randrange(3, 51)
-        return number
+    return number_one, number_two
 
 
 def get_answer(total, question):
@@ -358,4 +350,5 @@ def main():
                 play_game = play_again()
 
 
-main()
+if __name__ == '__main__':
+    main()

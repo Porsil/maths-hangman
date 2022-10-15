@@ -346,12 +346,14 @@ def main():
         if game_type == 5:
             play_game = end_game()
         else:
+            print_line()
             game_header()
             difficulty_menu()
             game_difficulty = get_game_difficulty()
             if game_difficulty == 4:
                 play_game = end_game()
             else:
+                print_line()
                 game_header()
                 game_message(game_type, game_difficulty)
                 game_play(game_type, game_difficulty,
